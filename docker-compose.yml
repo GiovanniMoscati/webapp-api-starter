@@ -1,0 +1,13 @@
+services:
+  db:
+    image: mysql:8
+    container_name: perfume-mysql
+    restart: always
+    ports:
+      - 3310:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: MZkaoq01
+      MYSQL_DATABASE: perfumes
+    volumes:
+      - ./db-schema.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./db-seeds.sql:/docker-entrypoint-initdb.d/2.sql
